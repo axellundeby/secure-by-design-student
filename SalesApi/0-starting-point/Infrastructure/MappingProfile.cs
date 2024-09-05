@@ -3,13 +3,11 @@ using AutoMapper;
 using Contracts;
 using SalesApi.Domain.Model;
 
-namespace SalesApi.Infrastructure
+public class MappingProfile : Profile
 {
-    public class MappingProfile : Profile
+    public MappingProfile()
     {
-        public MappingProfile()
-        {
-            CreateMap<Product, ProductDTO>();
-        }
+        CreateMap<Product, ProductDTO>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id.Value));
     }
 }
